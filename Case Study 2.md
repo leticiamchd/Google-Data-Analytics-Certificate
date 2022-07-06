@@ -1,6 +1,6 @@
 
 
-####1. Adherence of each user 
+#### 1. Adherence of each user 
 
 ```sql 
 SELECT Id,
@@ -29,7 +29,7 @@ User X Frequency percentage
  * The majority of user (32 of 33) used at least half days
  * More than the half users (21 of 33) used all 31 days 
 
-####2. Average of all users
+#### 2. Average of all users
 
 ```sql
 SELECT 
@@ -52,7 +52,7 @@ avg_FairlyActiveMinutes	13.56
 avg_LightlyActiveMinutes	192.81
 avg_SedentaryMinutes 991.21
 
-####3. Adherence of user in each pilar (Daily Activity / Sleep / Weight)
+#### 3. Adherence of user in each pilar (Daily Activity / Sleep / Weight)
 
 First, create a table of frequency in each pilar 
 
@@ -109,7 +109,7 @@ LEFT JOIN ...weight_frequency_users` AS weight
 ON daily.Id = weight.Id
 ```
 
-####Knowing how many completed at least one of all activities 
+#### Knowing how many completed at least one of all activities 
 
 ```sql 
 SELECT 
@@ -127,7 +127,7 @@ WHERE sleep.amount IS NOT null AND weight.amount IS NOT null
 
 6 of 33 user completed at least of all activities
 
-####Knowing how many completed at least half of all activities 
+#### Knowing how many completed at least half of all activities 
 
 ```sql 
 SELECT 
@@ -143,7 +143,7 @@ WHERE (sleep.amount IS NOT null AND weight.amount IS NOT null) AND (daily.amount
 ```
  Just 1 person completed at least half of all activities 
  
-####Knowing Who completed at least half of all activities, and how many days of each acitivity the person completed 
+#### Knowing Who completed at least half of all activities, and how many days of each acitivity the person completed 
 
 ```sql
 SELECT 
@@ -160,7 +160,7 @@ ON daily.Id = weight.Id
 
 WHERE (sleep.amount IS NOT null AND weight.amount IS NOT null) AND (daily.amount >= 15 AND sleep.amount >= 15 AND weight.amount >=15)
 ```
-The user 6962181067 tecked 31 days of activity,  31 days of sleep and 30 days of weight. 
+The user 6962181067 tracked 31 days of activity,  31 days of sleep and 30 days of weight. 
 This is the ideal user to compare the effects of all pilars together 
 
 
