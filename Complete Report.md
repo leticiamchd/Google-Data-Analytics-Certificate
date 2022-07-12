@@ -5,9 +5,9 @@
 ### The Company
 Bellabeat is a high-tech manufacturer of health-focused products for women. Is a successful small company, but they have the potential to become a larger player in the global smart device market.
 
-- The Golden Circle 
-**Why** : The mission of Bellabeat is to empower women to reconnect with themselves, unleash their inner strengths and be what they were meant to be. 
-**How** : They do that with an ecosystem of products and services that focus on women’s health. 
+- The Golden Circle <br/>
+**Why** : The mission of Bellabeat is to empower women to reconnect with themselves, unleash their inner strengths and be what they were meant to be. <br/>
+**How** : They do that with an ecosystem of products and services that focus on women’s health. <br/>
 **What** : Wearables using feminine design and technology adjusted to female bodies.
 
 ### Why tracking health habits ?
@@ -24,12 +24,9 @@ https://www.un.org/en/chronicle/article/lifestyle-diseases-economic-burden-healt
 
 Identify trends in how consumers use non-Bellabeat smart devices and how these insights can be applied into Bellabeat’s marketing strategy.
 
-**Stakeholders**
-
-Urška Sršen - Bellabeat cofounder and Chief Creative Officer
-
-Sando Mur - Bellabeat cofounder and key member of Bellabeat executive team
-
+**Stakeholders**<br/>
+Urška Sršen - Bellabeat cofounder and Chief Creative Officer<br/>
+Sando Mur - Bellabeat cofounder and key member of Bellabeat executive team<br/>
 Bellabeat Marketing Analytics team
 
 ## 2. Prepare
