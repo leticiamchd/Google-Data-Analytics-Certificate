@@ -78,12 +78,10 @@ All columns that contains DateTime was change for a 24h DateTime.<br/>
 
 For access unique users in each tables
 
-'''sql
-
-	SELECT COUNT(distinct Id)
-	FROM **each table directory**
- 
-'''
+```sql
+SELECT COUNT(distinct Id)
+FROM **each table directory**
+```
 
 
 **Results**
@@ -103,7 +101,7 @@ For access unique users in each tables
 **Table 13:** minuteMETsNarrow_merged.csv - 33 unique users <br/>
 **Table 14:** minuteSleep_merged.csv - 24 unique users <br/>
 **Table 15:** minuteStepsNarrow_merged - 33 unique users <br/>
-**Table 16:**minuteStepsWide_merged - 33 unique users <br/>
+**Table 16:** minuteStepsWide_merged - 33 unique users <br/>
 **Table 17:** sleepDay_merged.csv - 24 unique users <br/>
 **Table 18:** weightLogInfo_merged - 8 unique users <br/>
  
@@ -122,8 +120,70 @@ Table 18 -  3 columns (WeightKg,WeightPounds,BMI)<br/>
 
 Using Table 1 that contains all users, we are going to check the adherence of each one per day. After that, classify them into: 
 
-**Very low use:**< 25 % of the month<br/>
-**Low use:**25 ~ 50 % of the month<br/>
-**Moderate use:**50 ~ 75% of the month<br/>
-**High use:**> 75% of the month<br/>
+**Very low use:** < 25 % of the month<br/>
+**Low use:** 25 ~ 50 % of the month<br/>
+**Moderate use:** 50 ~ 75% of the month<br/>
+**High use:** > 75% of the month<br/>
 
+**SQL QUERY:** 
+```sql
+SELECT Id, frequency, frequency_percent,
+CASE
+  WHEN frequency_percent < 25 THEN 'Very Low Use'
+  WHEN frequency_percent >= 25 AND frequency_percent < 50 THEN 'Low Use'
+  WHEN frequency_percent >= 50 AND frequency_percent < 75 THEN 'Moderate Use'
+  WHEN frequency_percent >= 75 THEN 'High Use'
+  ELSE ''
+  END AS use_classification
+FROM
+(
+SELECT Id,
+COUNT(Id) AS frequency, 
+ROUND(COUNT(Id) / 31 * 100,2) AS frequency_percent
+FROM `resonant-cairn-350019.Cleaned_google_capstone_CaseStudy.dailyActivity_cleaned` 
+GROUP BY Id
+) AS inner_query
+ 
+GROUP BY Id, frequency, frequency_percent
+ORDER BY frequency DESC
+```
+ 
+**RESULT:**
+TABELA 
+
+##### Now grouping by use_classification 
+
+**SQL QUERY:**
+```sql
+SELECT
+use_classification,
+ROUND(COUNT(use_classification) / 33 *100,2) AS classification_percent
+FROM
+(
+  SELECT Id, frequency, frequency_percent,
+  CASE
+   WHEN frequency_percent < 25 THEN 'Very Low Use'
+   WHEN frequency_percent >= 25 AND frequency_percent < 50 THEN 'Low Use'
+   WHEN frequency_percent >= 50 AND frequency_percent < 75 THEN 'Moderate Use'
+   WHEN frequency_percent >= 75 THEN 'High Use'
+   ELSE ''
+   END AS use_classification
+  FROM
+    (
+    SELECT Id,
+    COUNT(Id) AS frequency, 
+    ROUND(COUNT(Id) / 31 * 100,2) AS frequency_percent
+    FROM `resonant-cairn-350019.Cleaned_google_capstone_CaseStudy.dailyActivity_cleaned` 
+    GROUP BY Id
+    ) AS inner_query
+ 
+  GROUP BY Id, frequency, frequency_percent
+  ORDER BY frequency DESC
+)
+ 
+GROUP BY use_classification
+```
+ 
+**RESULTS:**
+
+TABELA
