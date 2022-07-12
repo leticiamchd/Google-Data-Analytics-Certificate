@@ -74,5 +74,56 @@ In Table 18, for the column "Fat" there was 65 blank spaces, corresponding for 9
 
 All columns that contains DateTime was change for a 24h DateTime.<br/>
 
-### 3.4 -  Unique users (Used SQL - Bigquery)
+###  3.4 -  Unique users (Used SQL - Bigquery)
+
+For access unique users in each tables
+
+'''sql
+
+	SELECT COUNT(distinct Id)
+	FROM **each table directory**
+ 
+'''
+
+
+**Results**
+
+**Table 1:**  dailyActivity_merged.csv - 33 unique users<br/>
+**Table 2:** dailyCalories_merged.csv - 33 unique users<br/>
+**Table 3:** dailyIntensities_merged.csv - 33 unique users<br/>
+**Table 4**: dailySteps_merged.csv - 33 unique users<br/>
+**Table 5:** heartrate_seconds_merged.csv - 14 unique users<br/>
+**Table 6:** hourlyCalories_merged.csv - 33 unique users <br/>
+**Table 7:**  hourlyIntensities_merged.csv - 33 unique users <br/>
+**Table 8:**  hourlySteps_merged.csv - 33 unique users <br/>
+**Table 9:** minutescaloriesNarrow_merged.csv - 33 unique users <br/>
+**Table 10:** minuteCaloriesWide_merged.csv - 33 unique users <br/>
+**Table 11:** minuteIntensitiesNarrow_merged.csv - 33 unique users <br/>
+**Table 12:** minuteIntensitiesWide_merged.csv - 33 unique users <br/>
+**Table 13:** minuteMETsNarrow_merged.csv - 33 unique users <br/>
+**Table 14:** minuteSleep_merged.csv - 24 unique users <br/>
+**Table 15:** minuteStepsNarrow_merged - 33 unique users <br/>
+**Table 16:**minuteStepsWide_merged - 33 unique users <br/>
+**Table 17:** sleepDay_merged.csv - 24 unique users <br/>
+**Table 18:** weightLogInfo_merged - 8 unique users <br/>
+ 
+### 3.5 - Round (Used SQL - Bigquery)
+ 
+To make the number better for reading, some numbers were rounded with 2 decimals. Below, the information about each table. All columns that were motificated stayed with the same name previous the change adding "cleaned" in the end, and they were stored into a different dataset in Bigquery. <br/>
+ 
+Table 1 - <br/>
+Table 17 - 0 columns<br/>
+Table 18 -  3 columns (WeightKg,WeightPounds,BMI)<br/>
+
+## 4. Analyze 
+### 4.1 - First, we are going to analyze the characteristics of app use 
+
+#### 4.1.1 -  Adherence of each user, and classification in daily activities 
+
+Using Table 1 that contains all users, we are going to check the adherence of each one per day. After that, classify them into: 
+
+**Very low use:**< 25 % of the month<br/>
+**Low use:**25 ~ 50 % of the month<br/>
+**Moderate use:**50 ~ 75% of the month<br/>
+**High use:**> 75% of the month<br/>
 
