@@ -66,6 +66,7 @@
 > > [4.2.8 - The difference in steps betweens periods of the day and day of week](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#428---the-difference-in-steps-betweens-periods-of-the-day-and-day-of-week)<br/>
 
 
+## Introduction
 
 ### The Company
 Bellabeat is a high-tech manufacturer of health-focused products for women. Is a successful small company, but they have the potential to become a larger player in the global smart device market.
