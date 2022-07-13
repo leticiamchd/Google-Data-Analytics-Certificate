@@ -32,6 +32,6 @@ The data set is publicly available on Kaggle. [Here](https://www.kaggle.com/data
 
 # Reports
 All process and code: [Here](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#418--digging-into-low-adherence-users)<br/>
-Visualization:<br/>
+Visualization:[Here](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Visualization.ipynb)<br/>
 Dashboard:<br/>
 Presentation:<br/>
