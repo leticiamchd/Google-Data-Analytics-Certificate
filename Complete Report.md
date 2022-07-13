@@ -1,6 +1,8 @@
 # Google Analytics Certificate Capstone 
 #### Case Study 2 - BellaBeat
 
+**FOR A BETTER VISUALIZATION, READ THIS WITH GITHUB IN LIGHT MODE**
+
 ## Summary 
 [1. Ask](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#1-ask)<br/>
 > [1.1 - Business Task ](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#11---business-task)<br/>
