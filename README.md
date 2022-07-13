@@ -1,5 +1,4 @@
-
-![download](https://user-images.githubusercontent.com/66830501/178843561-f847ea0f-5939-454b-8dfb-f3153bee531b.jpeg)
+![download (1)](https://user-images.githubusercontent.com/66830501/178843675-83a637ab-c5ca-4e2d-85a1-2f5d85e7cef3.jpeg)
 
 
 This analysis is an optional Capstone project from the Google Data Analytics Professional Certificate on Coursera.
@@ -13,26 +12,26 @@ The mission of Bellabeat is to empower women to reconnect with themselves, unlea
 Identify trends in how consumers use non-Bellabeat smart devices and how these insights can be applied into Bellabeat’s marketing strategy.
 
 **Stakeholders**
-Urška Sršen - Bellabeat cofounder and Chief Creative Officer
-Sando Mur - Bellabeat cofounder and key member of Bellabeat executive team
+Urška Sršen - Bellabeat cofounder and Chief Creative Officer<br/>
+Sando Mur - Bellabeat cofounder and key member of Bellabeat executive team<br/>
 Bellabeat Marketing Analytics team
 
 
 # Business Objectives:
-What are the trends identified?
-How could these trends apply to Bellabeat customers?
+What are the trends identified?<br/>
+How could these trends apply to Bellabeat customers?<br/>
 How could these trends help influence Bellabeat marketing strategy?
 
 # Tools:
-Spreadsheets for Data Cleaning and Data Tranformation
-SQL for Data Analysis
+Spreadsheets for Data Cleaning and Data Tranformation<br/>
+SQL for Data Analysis<br/>
 Python Data Visualisation 
 
 # Data Set:
 The data set is publicly available on Kaggle.
 
 # Reports
-All process and code: 
-Visualization:
-Dashboard:
-Presentation:
+All process and code: <br/>
+Visualization:<br/>
+Dashboard:<br/>
+Presentation:<br/>
