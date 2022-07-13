@@ -31,7 +31,7 @@ Python for Data Visualisation
 The data set is publicly available on Kaggle. [Here](https://www.kaggle.com/datasets/arashnic/fitbit)
 
 # Reports
-[All process and code:](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#418--digging-into-low-adherence-users)<br/>
-[Visualization:](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Visualization.ipynb)<br/>
-Dashboard:<br/>
-Presentation:<br/>
+[All process and code](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#418--digging-into-low-adherence-users)<br/>
+[Visualization](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Visualization.ipynb)<br/>
+[Dashboard](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Bellabeat%20Report%20v1.0.pdf)<br/>
+Presentation<br/>
