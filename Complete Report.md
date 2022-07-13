@@ -2,6 +2,7 @@
 #### Case Study 2 - BellaBeat
 
 ## Summary 
+[1. Ask](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#1-ask)
 ### The Company
 Bellabeat is a high-tech manufacturer of health-focused products for women. Is a successful small company, but they have the potential to become a larger player in the global smart device market.
 
