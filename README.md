@@ -8,10 +8,10 @@ Bellabeat is a high-tech manufacturer of beautifully-designed health-focused sma
 
 The mission of Bellabeat is to empower women to reconnect with themselves, unleash their inner strengths and be what they were meant to be. They do that with an ecosystem of products and services that focus on women’s health. 
 
-#Business Task:
+# Business Task:
 Identify trends in how consumers use non-Bellabeat smart devices and how these insights can be applied into Bellabeat’s marketing strategy.
 
-**Stakeholders**
+**Stakeholders**<br/>
 Urška Sršen - Bellabeat cofounder and Chief Creative Officer<br/>
 Sando Mur - Bellabeat cofounder and key member of Bellabeat executive team<br/>
 Bellabeat Marketing Analytics team
@@ -28,10 +28,10 @@ SQL for Data Analysis<br/>
 Python Data Visualisation 
 
 # Data Set:
-The data set is publicly available on Kaggle.
+The data set is publicly available on Kaggle. [Here](https://www.kaggle.com/datasets/arashnic/fitbit)
 
 # Reports
-All process and code: <br/>
+All process and code: [Here](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#418--digging-into-low-adherence-users)<br/>
 Visualization:<br/>
 Dashboard:<br/>
 Presentation:<br/>
