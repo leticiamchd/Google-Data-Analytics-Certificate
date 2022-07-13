@@ -25,13 +25,13 @@ How could these trends help influence Bellabeat marketing strategy?
 # Tools:
 Spreadsheets for Data Cleaning and Data Tranformation<br/>
 SQL for Data Analysis<br/>
-Python Data Visualisation 
+Python for Data Visualisation 
 
 # Data Set:
 The data set is publicly available on Kaggle. [Here](https://www.kaggle.com/datasets/arashnic/fitbit)
 
 # Reports
-All process and code: [Here](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#418--digging-into-low-adherence-users)<br/>
-Visualization:[Here](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Visualization.ipynb)<br/>
+[All process and code:](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#418--digging-into-low-adherence-users)<br/>
+[Visualization:](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Visualization.ipynb)<br/>
 Dashboard:<br/>
 Presentation:<br/>
