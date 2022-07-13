@@ -2,7 +2,44 @@
 #### Case Study 2 - BellaBeat
 
 ## Summary 
-[1. Ask](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#1-ask)
+[1. Ask](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#1-ask)<br/>
+> [1.1 - Business Task ](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#11---business-task)<br/>
+
+[2. Prepare](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#2-prepare) <br/>
+> [2.1 - Where is the data stored ?](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#21---where-is-the-data-stored-)<br/>
+> [2.2 - How is the data organized ?](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#22---how-is-the-data-organized-)<br/>
+> [2.3 - Bias and credibility](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#23---bias-and-credibility)<br/>
+> [2.4 - Security and Privacy](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#24---security-and-privacy)<br/>
+
+[3. Process](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#3-process)<br>
+> [3.1 - Storage](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#31---storage)<br/>
+> [3.2 - Filtering (Used Spreadsheets)](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#32----filtering-used-spreadsheets)<br/>
+> [3.3 - Changes (Used Spreadsheets)](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#33----changes-used-spreadsheets)<br/>
+> [3.4 - Unique users (Used SQL - Bigquery)](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#34----unique-users-used-sql---bigquery)<br/>
+> [3.5 - Round (Used SQL - Bigquery)](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#35---round-used-sql---bigquery)<br/>
+
+[4. Analyze](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#4-analyze)<br/>
+> [4.1 - First, we are going to analyze the characteristics of app use](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#41---first-we-are-going-to-analyze-the-characteristics-of-app-use)<br/>
+> > [4.1.1 - Adherence of each user, and classification in daily activities](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#411----adherence-of-each-user-and-classification-in-daily-activities)<br/>
+> > > [Now grouping by use_classification](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#now-grouping-by-use_classification)<br/>
+> > [4.1.2 - Adherence of each user, and classification in sleep](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#412---adherence-of-each-user-and-classification-in-sleep)<br/>
+> > > [Now grouping by use_classification](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#now-grouping-by-use_classification-1)<br/>
+> > [4.1.3 -Adherence of each user, and classification in weight](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#413--adherence-of-each-user-and-classification-in-weight)<br/>
+> > > [Now grouping by use_classification](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#now-grouping-by-use_classification-2)<br/>
+> > [4.1.4 - Adherence of users in tracking their daily activities + sleep + weight](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#414---adherence-of-users-in-tracking-their-daily-activities--sleep--weight)<br/>
+> > [4.1.5 -How many users tracked all 3 pillars (Activity, sleep, weight)?](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#415--how-many-users-tracked-all-3-pillars-activity-sleep-weight)<br/>
+> > > [Daily Activity](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#daily-activity)<br/>
+> > > [Sleep](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#sleep)<br/>
+> > > [Weight](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#weight)<br/>
+> > > [Joining all 3 tables:](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#joining-all-3-tables)<br>
+> > > [Knowing how many completed at least one of all activities](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#knowing-how-many-completed-at-least-one-of-all-activities)<br/>
+> > > [Knowing Who completed at least half of all activities, and how many days of each acitivity the person completed](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#knowing-who-completed-at-least-half-of-all-activities-and-how-many-days-of-each-acitivity-the-person-completed)<br/>
+> > [4.1.6 - App usage of each user, per month](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#416---app-usage-of-each-user-per-month)<br/>
+> > [4.1.7 - Average of device usage per day through time](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#417---average-of-device-usage-per-day-through-time)<br/>
+> > [4.1.8 -Digging into low adherence users](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#418--digging-into-low-adherence-users)<br/>
+> > 
+
+
 ### The Company
 Bellabeat is a high-tech manufacturer of health-focused products for women. Is a successful small company, but they have the potential to become a larger player in the global smart device market.
 
