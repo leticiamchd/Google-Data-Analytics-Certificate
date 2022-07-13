@@ -208,7 +208,7 @@ FROM
 SELECT Id,
 COUNT(Id) AS frequency, 
 ROUND(COUNT(Id) / 31 * 100,2) AS frequency_percent
-FROM `resonant-cairn-350019.Cleaned_google_capstone_CaseStudy.dailyActivity_cleaned` 
+FROM ...Cleaned_google_capstone_CaseStudy.dailyActivity_cleaned` 
 GROUP BY Id
 ) AS inner_query
  
@@ -241,7 +241,7 @@ FROM
     SELECT Id,
     COUNT(Id) AS frequency, 
     ROUND(COUNT(Id) / 31 * 100,2) AS frequency_percent
-    FROM `resonant-cairn-350019.Cleaned_google_capstone_CaseStudy.dailyActivity_cleaned` 
+    FROM ...Cleaned_google_capstone_CaseStudy.dailyActivity_cleaned` 
     GROUP BY Id
     ) AS inner_query
  
@@ -276,7 +276,7 @@ FROM
 SELECT Id,
 COUNT(distinct SleepDay) AS frequency, 
 ROUND(COUNT(distinct SleepDay) / 31 * 100,2) AS frequency_percent
-FROM `resonant-cairn-350019.google_case_study_2.sleep_day`
+FROM ...google_case_study_2.sleep_day`
 GROUP BY Id
 ) AS inner_query
  
@@ -313,7 +313,7 @@ FROM
     SELECT Id,
     COUNT(distinct SleepDay) AS frequency, 
     ROUND(COUNT(distinct SleepDay) / 31 * 100,2) AS frequency_percent
-    FROM `resonant-cairn-350019.google_case_study_2.sleep_day`
+    FROM ...google_case_study_2.sleep_day`
     GROUP BY Id
     ) AS inner_query
  
@@ -348,7 +348,7 @@ FROM
 SELECT Id,
 COUNT(Date) AS frequency, 
 ROUND(COUNT(Date) / 31 * 100,2) AS frequency_percent
-FROM `resonant-cairn-350019.google_capstone_CaseStudy.weightLogInfo`
+FROM ...google_capstone_CaseStudy.weightLogInfo`
 GROUP BY Id
 ) AS inner_query
  
@@ -383,7 +383,7 @@ FROM
     SELECT Id,
     COUNT(Date) AS frequency, 
     ROUND(COUNT(Date) / 31 * 100,2) AS frequency_percent
-    FROM `resonant-cairn-350019.google_capstone_CaseStudy.weightLogInfo`
+    FROM ...google_capstone_CaseStudy.weightLogInfo`
     GROUP BY Id
     ) AS inner_query
  
@@ -422,7 +422,7 @@ SELECT
 Id, 
 COUNT(distinct ActivityDate) As amount
  
-FROM `resonant-cairn-350019.google_case_study_2.daily_activity`
+FROM ...google_case_study_2.daily_activity`
  
 GROUP BY Id
 ORDER BY amount DESC
@@ -437,7 +437,7 @@ SELECT
 Id, 
 COUNT(distinct SleepDay) As amount # Distinct was used to remove duplicate day naps 
  
-FROM `resonant-cairn-350019.google_case_study_2.sleep_day`
+FROM ...google_case_study_2.sleep_day`
  
 GROUP BY Id
 ORDER BY amount DESC
@@ -452,7 +452,7 @@ SELECT
 Id, 
 COUNT(distinct Date) As amount 
  
-FROM `resonant-cairn-350019.google_case_study_2.weight_day`
+FROM ...google_case_study_2.weight_day`
  
 GROUP BY Id
 ORDER BY amount DESC
@@ -469,10 +469,10 @@ daily.amount AS DailyActivity_amount,
 sleep.amount AS sleep_amount,
 weight.amount AS weight_amount
  
-FROM `resonant-cairn-350019.google_case_study_2.DailyActivity_frequency_users` AS daily
-LEFT JOIN `resonant-cairn-350019.google_case_study_2.sleep_frequency_users` AS sleep
+FROM ...google_case_study_2.DailyActivity_frequency_users` AS daily
+LEFT JOIN ...google_case_study_2.sleep_frequency_users` AS sleep
 ON daily.Id = sleep.Id
-LEFT JOIN `resonant-cairn-350019.google_case_study_2.weight_frequency_users` AS weight
+LEFT JOIN ..google_case_study_2.weight_frequency_users` AS weight
 ON daily.Id = weight.Id
 ```
 
@@ -482,10 +482,10 @@ ON daily.Id = weight.Id
 SELECT 
 COUNT(daily.Id)
  
-FROM `resonant-cairn-350019.google_case_study_2.DailyActivity_frequency_users` AS daily
-LEFT JOIN `resonant-cairn-350019.google_case_study_2.sleep_frequency_users` AS sleep
+FROM ...google_case_study_2.DailyActivity_frequency_users` AS daily
+LEFT JOIN ...google_case_study_2.sleep_frequency_users` AS sleep
 ON daily.Id = sleep.Id
-LEFT JOIN `resonant-cairn-350019.google_case_study_2.weight_frequency_users` AS weight
+LEFT JOIN ...google_case_study_2.weight_frequency_users` AS weight
 ON daily.Id = weight.Id
  
 WHERE sleep.amount IS NOT null AND weight.amount IS NOT null
@@ -502,10 +502,10 @@ daily.amount AS DailyActivity_amount
 , sleep.amount AS sleep_amount
 , weight.amount AS weight_amount
  
-FROM `resonant-cairn-350019.google_case_study_2.DailyActivity_frequency_users` AS daily
-LEFT JOIN `resonant-cairn-350019.google_case_study_2.sleep_frequency_users` AS sleep
+FROM ...google_case_study_2.DailyActivity_frequency_users` AS daily
+LEFT JOIN ...google_case_study_2.sleep_frequency_users` AS sleep
 ON daily.Id = sleep.Id
-LEFT JOIN `resonant-cairn-350019.google_case_study_2.weight_frequency_users` AS weight
+LEFT JOIN ...google_case_study_2.weight_frequency_users` AS weight
 ON daily.Id = weight.Id
  
 WHERE (sleep.amount IS NOT null AND weight.amount IS NOT null) AND (daily.amount >= 15 AND sleep.amount >= 15 AND weight.amount >=15)
@@ -529,7 +529,7 @@ FROM
 (
 SELECT Id,
 COUNT(ActivityHour) AS hour_per_day
-FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyCalories`
+FROM ...google_capstone_CaseStudy.hourlyCalories`
 GROUP BY Id 
 ) AS inner_query
  
@@ -554,7 +554,7 @@ FROM
   SELECT Id,
   EXTRACT(DATE FROM ActivityHour) AS date,
   COUNT(ActivityHour) AS hour_per_day
-  FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyCalories`
+  FROM ...google_capstone_CaseStudy.hourlyCalories`
   GROUP BY Id,date
 )
 WHERE hour_per_day != 0
@@ -585,7 +585,7 @@ SELECT Id,
 EXTRACT(DATE FROM ActivityHour) AS date,
 COUNT(ActivityHour) AS hour_per_day
  
-FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyCalories`
+FROM ...google_capstone_CaseStudy.hourlyCalories`
  
 WHERE id = 2347167796 
  
@@ -672,7 +672,7 @@ FROM
 (
 SELECT Id, 
 ROUND(AVG(StepTotal),2) AS avg_steps
-FROM `resonant-cairn-350019.google_capstone_CaseStudy.dailySteps`
+FROM ...google_capstone_CaseStudy.dailySteps`
 GROUP BY Id
 ORDER BY avg_steps DESC
 ) AS inner_query
@@ -702,7 +702,7 @@ FROM
   (
   SELECT Id, 
   ROUND(AVG(StepTotal),2) AS avg_steps
-  FROM `resonant-cairn-350019.google_capstone_CaseStudy.dailySteps`
+  FROM ...google_capstone_CaseStudy.dailySteps`
   WHERE StepTotal != 0
   GROUP BY Id
   ORDER BY avg_steps DESC
@@ -743,7 +743,7 @@ FROM
   ROUND(SUM(VeryActiveMinutes),2) AS sum_vigorousActivity ,
   ROUND(SUM(FairlyActiveMinutes),2) As sum_moderateActivity
  
-  FROM `resonant-cairn-350019.google_capstone_CaseStudy.dailyActivity`
+  FROM ...google_capstone_CaseStudy.dailyActivity`
  
   GROUP BY Id, week
 ) AS inner_query
@@ -778,7 +778,7 @@ FROM
     ROUND(SUM(VeryActiveMinutes),2) AS sum_vigorousActivity ,
     ROUND(SUM(FairlyActiveMinutes),2) As sum_moderateActivity
  
-    FROM `resonant-cairn-350019.google_capstone_CaseStudy.dailyActivity`
+    FROM ...google_capstone_CaseStudy.dailyActivity`
  
     GROUP BY Id, week
   ) AS inner_query
@@ -825,7 +825,7 @@ FROM
   EXTRACT(DAYOFWEEK FROM ActivityDay) AS weekday,
   LightlyActiveMinutes + FairlyActiveMinutes + VeryActiveMinutes AS total_activity_minutes
  
-  FROM `resonant-cairn-350019.google_capstone_CaseStudy.dailyIntensities`
+  FROM ...google_capstone_CaseStudy.dailyIntensities`
   WHERE Id != 0
 ) AS inner_query
  
@@ -862,7 +862,7 @@ FROM
   EXTRACT(DAYOFWEEK FROM ActivityDay) AS weekday,
   FairlyActiveMinutes + VeryActiveMinutes AS total_activity_minutes
  
-  FROM `resonant-cairn-350019.google_capstone_CaseStudy.dailyIntensities`
+  FROM ...google_capstone_CaseStudy.dailyIntensities`
   WHERE Id != 0
 ) AS inner_query
  
@@ -899,7 +899,7 @@ FROM
   EXTRACT(HOUR FROM ActivityHour) AS hour,
   
  
-  FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyIntensities`
+  FROM ...google_capstone_CaseStudy.hourlyIntensities`
   WHERE TotalIntensity != 0
   GROUP BY  hour,TotalIntensity
 )
@@ -932,7 +932,7 @@ FROM
   EXTRACT(HOUR FROM ActivityHour) AS hour,
   AVG(calories) AS avg_calories
  
-  FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyCalories`
+  FROM ...google_capstone_CaseStudy.hourlyCalories`
  
   GROUP BY  hour
 )
@@ -975,7 +975,7 @@ FROM
   EXTRACT(DAYOFWEEK FROM ActivityHour) AS weekday,
   EXTRACT(HOUR FROM ActivityHour) AS hour,
   ROUND(AVG(TotalIntensity),2) AS avg_intensity 
-  FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyIntensities`
+  FROM ...google_capstone_CaseStudy.hourlyIntensities`
   WHERE Id != 0
   --GROUP BY  hour,TotalIntensity
   GROUP BY weekday,hour
@@ -1026,7 +1026,7 @@ FROM
   EXTRACT(HOUR FROM ActivityHour) AS hour,
   AVG(calories) AS avg_calories
  
-  FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyCalories`
+  FROM ...google_capstone_CaseStudy.hourlyCalories`
   WHERE Id != 0
   --GROUP BY  hour,TotalIntensity
   GROUP BY weekday,hour
@@ -1077,7 +1077,7 @@ FROM
   EXTRACT(HOUR FROM ActivityHour) AS hour,
   AVG(StepTotal) AS avg_steps
  
-  FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlySteps`
+  FROM ...google_capstone_CaseStudy.hourlySteps`
   WHERE Id != 0
   --GROUP BY  hour,TotalIntensity
   GROUP BY weekday,hour
