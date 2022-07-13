@@ -22,22 +22,49 @@
 > [4.1 - First, we are going to analyze the characteristics of app use](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#41---first-we-are-going-to-analyze-the-characteristics-of-app-use)<br/>
 > > [4.1.1 - Adherence of each user, and classification in daily activities](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#411----adherence-of-each-user-and-classification-in-daily-activities)<br/>
 > > > [Now grouping by use_classification](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#now-grouping-by-use_classification)<br/>
+
 > > [4.1.2 - Adherence of each user, and classification in sleep](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#412---adherence-of-each-user-and-classification-in-sleep)<br/>
+
 > > > [Now grouping by use_classification](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#now-grouping-by-use_classification-1)<br/>
+
 > > [4.1.3 -Adherence of each user, and classification in weight](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#413--adherence-of-each-user-and-classification-in-weight)<br/>
+
 > > > [Now grouping by use_classification](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#now-grouping-by-use_classification-2)<br/>
+
 > > [4.1.4 - Adherence of users in tracking their daily activities + sleep + weight](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#414---adherence-of-users-in-tracking-their-daily-activities--sleep--weight)<br/>
 > > [4.1.5 -How many users tracked all 3 pillars (Activity, sleep, weight)?](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#415--how-many-users-tracked-all-3-pillars-activity-sleep-weight)<br/>
+
 > > > [Daily Activity](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#daily-activity)<br/>
 > > > [Sleep](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#sleep)<br/>
 > > > [Weight](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#weight)<br/>
 > > > [Joining all 3 tables:](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#joining-all-3-tables)<br>
 > > > [Knowing how many completed at least one of all activities](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#knowing-how-many-completed-at-least-one-of-all-activities)<br/>
 > > > [Knowing Who completed at least half of all activities, and how many days of each acitivity the person completed](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#knowing-who-completed-at-least-half-of-all-activities-and-how-many-days-of-each-acitivity-the-person-completed)<br/>
+
 > > [4.1.6 - App usage of each user, per month](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#416---app-usage-of-each-user-per-month)<br/>
 > > [4.1.7 - Average of device usage per day through time](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#417---average-of-device-usage-per-day-through-time)<br/>
 > > [4.1.8 -Digging into low adherence users](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#418--digging-into-low-adherence-users)<br/>
-> > 
+
+
+> > > [For Id = 2347167796](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#for-id--2347167796)<br/>
+> > > [For Id = 3372868164](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#for-id--3372868164)<br/>
+> > > [For Id = 4057192912](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#for-id--4057192912)<br/>
+> > > [For Id = 6117666160](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#for-id--6117666160)<br/>
+> > > [For Id = 6290855005](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#for-id--6290855005)<br/>
+> > > [For Id = 7007744171](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#for-id--7007744171)<br/>
+> > > [For Id = 8253242879](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#for-id--8253242879)<br/>
+> > > [Visualization of all 7 users](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#visualization-of-all-7-users)<br/>
+
+> [4.2 - Understand the users habits](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#42---understand-the-users-habits)<br/>
+> > [4.2.1 - Steps classification](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#421---steps-classification)<br/>
+> > [4.2.2 - Amount of users that achieved the minimum physical activity recommended by the American Heart Association](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#422---amount-of-users-that-achieved-the-minimum-physical-activity-recommended-by-the-american-heart-association)<br/>
+> > [4.2.3 - Is there a preferred day of week for doing physical activity ?](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#423---is-there-a-preferred-day-of-week-for-doing-physical-activity-)<br/>
+> > [4.2.4 - In what period of the day users do more physical activity ?](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#424---in-what-period-of-the-day-users-do-more-physical-activity-)<br/>
+> > [4.2.5 - In what period of the day users spent more calories ?](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#425---in-what-period-of-the-day-users-spent-more-calories-)<br/>
+> > [4.2.6 - The difference in activities betweens periods of the day and day of week](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#426---the-difference-in-activities-betweens-periods-of-the-day-and-day-of-week)<br/>
+> > [4.2.7 - The difference in calories spent betweens periods of the day and day of week](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#427---the-difference-in-calories-spent-betweens-periods-of-the-day-and-day-of-week)<br/>
+> > [4.2.8 - The difference in steps betweens periods of the day and day of week](https://github.com/leticiamchd/Google-Data-Analytics-Certificate/blob/main/Complete%20Report.md#428---the-difference-in-steps-betweens-periods-of-the-day-and-day-of-week)<br/>
+
 
 
 ### The Company
