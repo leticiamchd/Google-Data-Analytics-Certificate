@@ -1,4 +1,5 @@
 
+![download](https://user-images.githubusercontent.com/66830501/178843561-f847ea0f-5939-454b-8dfb-f3153bee531b.jpeg)
 
 
 This analysis is an optional Capstone project from the Google Data Analytics Professional Certificate on Coursera.
