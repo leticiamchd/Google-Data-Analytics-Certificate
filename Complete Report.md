@@ -187,3 +187,872 @@ GROUP BY use_classification
 **RESULTS:**
 
 TABELA
+
+#### 4.1.2 - Adherence of each user, and classification in sleep
+ 
+Like it was said before, not all 33 users tracked their sleep. Of 33 users, only 24 tracked their sleep (72,72%) . Now we are going to find how many days these 24 users tracked their sleeps, and classificate them.
+ 
+**SQL QUERY:**
+ 
+```sql
+SELECT Id, frequency, frequency_percent,
+CASE
+  WHEN frequency_percent < 25 THEN 'Very Low Use'
+  WHEN frequency_percent >= 25 AND frequency_percent < 50 THEN 'Low Use'
+  WHEN frequency_percent >= 50 AND frequency_percent < 75 THEN 'Moderate Use'
+  WHEN frequency_percent >= 75 THEN 'High Use'
+  ELSE ''
+  END AS use_classification
+FROM
+(
+SELECT Id,
+COUNT(distinct SleepDay) AS frequency, 
+ROUND(COUNT(distinct SleepDay) / 31 * 100,2) AS frequency_percent
+FROM `resonant-cairn-350019.google_case_study_2.sleep_day`
+GROUP BY Id
+) AS inner_query
+ 
+GROUP BY Id, frequency, frequency_percent
+ORDER BY frequency DESC
+```
+ 
+*Obs: The use of “distinct” before SleepDay was because one of the users tracked 2 naps in the same day.
+ 
+**RESULTS**
+
+TABELA
+
+##### Now grouping by use_classification 
+
+**SQL QUERY:**
+ 
+```sql
+SELECT
+use_classification,
+ROUND(COUNT(use_classification) / 24 *100,2) AS classification_percent
+FROM
+(
+  SELECT Id, frequency, frequency_percent,
+  CASE
+   WHEN frequency_percent < 25 THEN 'Very Low Use'
+   WHEN frequency_percent >= 25 AND frequency_percent < 50 THEN 'Low Use'
+   WHEN frequency_percent >= 50 AND frequency_percent < 75 THEN 'Moderate Use'
+   WHEN frequency_percent >= 75 THEN 'High Use'
+   ELSE ''
+   END AS use_classification
+  FROM
+    (
+    SELECT Id,
+    COUNT(distinct SleepDay) AS frequency, 
+    ROUND(COUNT(distinct SleepDay) / 31 * 100,2) AS frequency_percent
+    FROM `resonant-cairn-350019.google_case_study_2.sleep_day`
+    GROUP BY Id
+    ) AS inner_query
+ 
+  GROUP BY Id, frequency, frequency_percent
+  ORDER BY frequency DESC
+)
+ 
+GROUP BY use_classification
+ORDER BY classification_percent DESC
+```
+ 
+**RESULTS:**
+
+TABELA
+
+#### 4.1.3 -Adherence of each user, and classification in weight
+Not all 33 users tracked their weight. Of 33 users, only 8 tracked (24,24%) . Now we are going to find how many days these 8 users tracked their weight, and classificate them.
+ 
+**SQL QUERY:**
+ 
+```sql
+SELECT Id, frequency, frequency_percent,
+CASE
+  WHEN frequency_percent < 25 THEN 'Very Low Use'
+  WHEN frequency_percent >= 25 AND frequency_percent < 50 THEN 'Low Use'
+  WHEN frequency_percent >= 50 AND frequency_percent < 75 THEN 'Moderate Use'
+  WHEN frequency_percent >= 75 THEN 'High Use'
+  ELSE ''
+  END AS use_classification
+FROM
+(
+SELECT Id,
+COUNT(Date) AS frequency, 
+ROUND(COUNT(Date) / 31 * 100,2) AS frequency_percent
+FROM `resonant-cairn-350019.google_capstone_CaseStudy.weightLogInfo`
+GROUP BY Id
+) AS inner_query
+ 
+GROUP BY Id, frequency, frequency_percent
+ORDER BY frequency DESC
+```
+ 
+**RESULTS**
+
+TABELA
+
+##### Now grouping by use_classification 
+
+**SQL QUERY:**
+ 
+```sql
+SELECT
+use_classification,
+ROUND(COUNT(use_classification) / 8 *100,2) AS classification_percent
+FROM
+(
+  SELECT Id, frequency, frequency_percent,
+  CASE
+   WHEN frequency_percent < 25 THEN 'Very Low Use'
+   WHEN frequency_percent >= 25 AND frequency_percent < 50 THEN 'Low Use'
+   WHEN frequency_percent >= 50 AND frequency_percent < 75 THEN 'Moderate Use'
+   WHEN frequency_percent >= 75 THEN 'High Use'
+   ELSE ''
+   END AS use_classification
+  FROM
+    (
+    SELECT Id,
+    COUNT(Date) AS frequency, 
+    ROUND(COUNT(Date) / 31 * 100,2) AS frequency_percent
+    FROM `resonant-cairn-350019.google_capstone_CaseStudy.weightLogInfo`
+    GROUP BY Id
+    ) AS inner_query
+ 
+  GROUP BY Id, frequency, frequency_percent
+  ORDER BY frequency DESC
+)
+ 
+GROUP BY use_classification
+ORDER BY classification_percent DESC
+```
+ 
+**RESULTS:**
+
+TABELA
+
+#### 4.1.4 - Adherence of users in tracking their daily activities + sleep + weight
+
+**SQL QUERY :**
+
+**RESULTS:**
+
+**VISUALIZATION:**
+
+![Fig 4 1 4](https://user-images.githubusercontent.com/66830501/178830645-b0d4c4ea-27be-4c3f-afb1-5377cc494e65.png)
+
+#### 4.1.5 -How many users tracked all 3 pillars (Activity, sleep, weight)?
+
+First, create a table of frequency in each pilar
+Daily activity
+
+**SQL QUERY:**
+
+```sql
+SELECT 
+Id, 
+COUNT(distinct ActivityDate) As amount
+ 
+FROM `resonant-cairn-350019.google_case_study_2.daily_activity`
+ 
+GROUP BY Id
+ORDER BY amount DESC
+```
+
+Sleep:
+
+SQL QUERY:
+
+```sql
+SELECT 
+Id, 
+COUNT(distinct SleepDay) As amount # Distinct was used to remove duplicate day naps 
+ 
+FROM `resonant-cairn-350019.google_case_study_2.sleep_day`
+ 
+GROUP BY Id
+ORDER BY amount DESC
+```
+ 
+Weight:
+
+SQL QUERY:
+
+```sql
+SELECT 
+Id, 
+COUNT(distinct Date) As amount 
+ 
+FROM `resonant-cairn-350019.google_case_study_2.weight_day`
+ 
+GROUP BY Id
+ORDER BY amount DESC
+```
+
+Joining all 3 tables:
+
+SQL QUERY:
+
+```sql
+SELECT 
+daily.Id, 
+daily.amount AS DailyActivity_amount,
+sleep.amount AS sleep_amount,
+weight.amount AS weight_amount
+ 
+FROM `resonant-cairn-350019.google_case_study_2.DailyActivity_frequency_users` AS daily
+LEFT JOIN `resonant-cairn-350019.google_case_study_2.sleep_frequency_users` AS sleep
+ON daily.Id = sleep.Id
+LEFT JOIN `resonant-cairn-350019.google_case_study_2.weight_frequency_users` AS weight
+ON daily.Id = weight.Id
+```
+
+Knowing how many completed at least one of all activities
+
+```sql
+SELECT 
+COUNT(daily.Id)
+ 
+FROM `resonant-cairn-350019.google_case_study_2.DailyActivity_frequency_users` AS daily
+LEFT JOIN `resonant-cairn-350019.google_case_study_2.sleep_frequency_users` AS sleep
+ON daily.Id = sleep.Id
+LEFT JOIN `resonant-cairn-350019.google_case_study_2.weight_frequency_users` AS weight
+ON daily.Id = weight.Id
+ 
+WHERE sleep.amount IS NOT null AND weight.amount IS NOT null
+```
+
+6 of 33 user completed at least of all pillars (Activity/Sleep/Weight)
+
+Knowing Who completed at least half of all activities, and how many days of each acitivity the person completed
+
+```sql
+SELECT 
+daily.Id, 
+daily.amount AS DailyActivity_amount
+, sleep.amount AS sleep_amount
+, weight.amount AS weight_amount
+ 
+FROM `resonant-cairn-350019.google_case_study_2.DailyActivity_frequency_users` AS daily
+LEFT JOIN `resonant-cairn-350019.google_case_study_2.sleep_frequency_users` AS sleep
+ON daily.Id = sleep.Id
+LEFT JOIN `resonant-cairn-350019.google_case_study_2.weight_frequency_users` AS weight
+ON daily.Id = weight.Id
+ 
+WHERE (sleep.amount IS NOT null AND weight.amount IS NOT null) AND (daily.amount >= 15 AND sleep.amount >= 15 AND weight.amount >=15)
+```
+
+**RESULTS:**
+
+TABELA
+
+The user 6962181067 tracked 31 days of activity, 31 days of sleep and 30 days of weight. This is the ideal user to compare the effects of all pillars together.
+
+#### 4.1.6 - App usage of each user, per month
+
+**SQL QUERY**
+
+```sql
+SELECT Id,
+SUM(hour_per_day) AS hour_per_month,
+ROUND(SUM(hour_per_day) / 744 *100,2) AS percentage_use_perMonth # 744 é a quantidade de horas em 31 dias
+FROM
+(
+SELECT Id,
+COUNT(ActivityHour) AS hour_per_day
+FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyCalories`
+GROUP BY Id 
+) AS inner_query
+ 
+GROUP BY Id
+ORDER BY Id
+```
+ 
+**RESULTS**
+
+This gave us a better look into the adherence of each user. In the previous analysis we could see the adherence in days, which gives us good information, but not complete. Someone can use everyday, but only 5 hour per day, or someone can use just for 10 days, but each day he used for 24 hours. So this query gives us a deep knowledge about adherence. So, knowing this, what happened with low users ? They just lowered the adherence through days or suddenly stopped using it ?
+
+#### 4.1.7 - Average of device usage per day through time
+
+
+**SQL QUERY:**
+
+```sql
+SELECT date,
+ROUND(AVG(hour_per_day),2) AS avg_hour_per_day
+FROM
+(
+  SELECT Id,
+  EXTRACT(DATE FROM ActivityHour) AS date,
+  COUNT(ActivityHour) AS hour_per_day
+  FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyCalories`
+  GROUP BY Id,date
+)
+WHERE hour_per_day != 0
+GROUP BY date
+```
+
+**RESULTS:**
+
+TABELA 
+
+**VISUALIZATION:**
+
+![Fig 4 1 7](https://user-images.githubusercontent.com/66830501/178831399-36af9fe4-adc1-4b95-893e-0e6b7fecfa5b.png)
+
+
+O uso do aparelho se mantém bem perto das 24 horas, tendo algumas variações no caminho, provavelmente pela interrupção do uso de poucos usuários. Porém há uma queda brusca no último dia dos dados disponíveis. Isso levanta algumas questões: 1. O uso pode ter caído apenas porque não foram disponibilizados mais dados; 2. É um tempo médio de duração da bateria, sendo nesse dia necessário a retirada do aparelho para carregar
+
+#### 4.1.8 -Digging into low adherence users 
+
+With this query I can analyze the previous adherence of the user, and the day that he stops using or that has any changes into the hours per day. The chosen users for this deeper analysis were all that the time used per month was below the mean (90%). 
+
+In one month, people was wearing the wearable at least 90% of the time 
+
+**SQL QUERY**
+
+```sql
+SELECT Id,
+EXTRACT(DATE FROM ActivityHour) AS date,
+COUNT(ActivityHour) AS hour_per_day
+ 
+FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyCalories`
+ 
+WHERE id = 2347167796 
+ 
+GROUP BY Id,date
+```
+
+**RESULTS**
+
+*For Id = 2347167796*
+
+TABELA
+
+Suddenly stop in 29/04
+
+##### For Id = 3372868164
+
+TABELA
+
+Suddenly stop in 01/05
+
+##### For Id = 4057192912
+
+TABELA
+
+This user didn’t have a good adherence and then just stopped using on 15/04.
+
+##### For Id = 6117666160
+
+TABELA 
+
+This user had a good adherence and then just stopped using on 09/05
+
+##### For Id = 6290855005
+
+TABELA
+
+This user had a good adherence and then just stopped using on 09/05
+
+##### For Id = 7007744171
+
+TABELA
+
+This user had a good adherence and then just stopped using on 07/05
+
+##### For Id = 8253242879
+
+TABELA
+
+ 
+This user had a good adherence and then just stopped using on 29/04
+
+We identificated a total of 7 users that didn’t use at least the mean number. And when digging into the way that these 7 users stopped using, we see that the majority suddenly stopped. Lost ? Got robbed ?
+
+##### Visualization of all 7 users
+
+![Fig 4 1 8 (1)](https://user-images.githubusercontent.com/66830501/178831986-607adcc5-8aab-4293-abe0-434f985d75a7.png)
+
+### 4.2 - Understand the users habits 
+
+#### 4.2.1 - Steps classification 
+https://www.10000steps.org.au/articles/counting-steps/#:~:text=Low%20active%20is%205%2C000%20to,active%20is%20more%20than%2012%2C500
+
+According to this, we are going to classificate de users:
+
+Sedentary < 5,000 steps per day 
+Low Active 5,000 ~ 7,499 steps per day 
+Somewhat Active 7,500 ~ 9,999 steps per day 
+Active > 10,000 steps per day 
+Highly Active > 12,500 steps per day 
+ 
+**SQL QUERY:**
+ 
+```sql
+SELECT Id,avg_steps, 
+CASE 
+  WHEN avg_steps < 5000 THEN 'Sedentary'
+  WHEN avg_steps >= 5000 AND avg_steps < 7500 THEN 'Low Active'
+  WHEN avg_steps >= 7500 AND avg_steps < 10000 THEN 'Somewhat Active'
+  WHEN avg_steps >= 10000 AND avg_steps < 12500 THEN 'Active'
+  WHEN avg_steps >= 12500 THEN 'Highly Active'
+  ELSE ''
+  END AS steps_classification
+FROM 
+(
+SELECT Id, 
+ROUND(AVG(StepTotal),2) AS avg_steps
+FROM `resonant-cairn-350019.google_capstone_CaseStudy.dailySteps`
+GROUP BY Id
+ORDER BY avg_steps DESC
+) AS inner_query
+```
+
+**RESULTS:**
+
+TABELA 
+
+And for we know the percentage of each classification:
+
+```sql
+SELECT steps_classification, 
+ROUND(COUNT(steps_classification) /33 * 100,2) AS percentage_stepsClassification
+FROM
+(
+  SELECT Id,avg_steps, 
+  CASE 
+    WHEN avg_steps < 5000 THEN 'Sedentary'
+    WHEN avg_steps >= 5000 AND avg_steps < 7500 THEN 'Low Active'
+    WHEN avg_steps >= 7500 AND avg_steps < 10000 THEN 'Somewhat Active'
+    WHEN avg_steps >= 10000 AND avg_steps < 12500 THEN 'Active'
+    WHEN avg_steps >= 12500 THEN 'Highly Active'
+    ELSE ''
+    END AS steps_classification
+  FROM 
+  (
+  SELECT Id, 
+  ROUND(AVG(StepTotal),2) AS avg_steps
+  FROM `resonant-cairn-350019.google_capstone_CaseStudy.dailySteps`
+  WHERE StepTotal != 0
+  GROUP BY Id
+  ORDER BY avg_steps DESC
+  ) AS inner_query
+)
+ 
+GROUP BY steps_classification
+ORDER BY percentage_stepsClassification DESC
+```
+
+**RESULTS:**
+
+TABELA
+
+
+**VISUALIZATION**
+
+![Fig 4 2 1](https://user-images.githubusercontent.com/66830501/178832236-b5b87d6a-0605-4cf6-9a34-f8809461cc29.png)
+
+#### 4.2.2 - Amount of users that achieved the minimum physical activity recommended by the American Heart Association 
+https://www.heart.org/en/healthy-living/fitness/fitness-basics/aha-recs-for-physical-activity-in-adults
+
+Very Active Minutes = Vigorous activity 
+Fairly Active Minutes = Moderate activity
+
+**SQL QUERY:**
+
+```sql
+SELECT  week, 
+SUM(CASE
+  WHEN sum_moderateActivity >= 150 OR sum_vigorousActivity >= 75 THEN 1
+  ELSE 0
+  END) AS recommendation_achieved
+FROM
+(
+  SELECT Id,
+  EXTRACT(WEEK FROM ActivityDate) AS week,
+  ROUND(SUM(VeryActiveMinutes),2) AS sum_vigorousActivity ,
+  ROUND(SUM(FairlyActiveMinutes),2) As sum_moderateActivity
+ 
+  FROM `resonant-cairn-350019.google_capstone_CaseStudy.dailyActivity`
+ 
+  GROUP BY Id, week
+) AS inner_query
+ 
+WHERE week != 0
+GROUP BY week
+```
+
+**RESULTS:**
+
+TABELA 
+
+But like we already saw, some users stopped tracking before the end of 31 days. So, for we know the percentage that achieved the activity recommendation in each week, we need to know how many users were still tracking their activity 
+
+**SQL QUERY:**
+
+```sql
+SELECT week, users_remaining, recommendation_achieved,
+ROUND(recommendation_achieved / users_remaining * 100,2) AS percentage_recommedationAchieved
+ 
+FROM
+(
+  SELECT  week, COUNT(Id) AS users_remaining,
+  SUM(CASE
+    WHEN sum_moderateActivity >= 150 OR sum_vigorousActivity >= 75 THEN 1
+    ELSE 0
+    END) AS recommendation_achieved
+  FROM
+  (
+    SELECT Id,
+    EXTRACT(WEEK FROM ActivityDate) AS week,
+    ROUND(SUM(VeryActiveMinutes),2) AS sum_vigorousActivity ,
+    ROUND(SUM(FairlyActiveMinutes),2) As sum_moderateActivity
+ 
+    FROM `resonant-cairn-350019.google_capstone_CaseStudy.dailyActivity`
+ 
+    GROUP BY Id, week
+  ) AS inner_query
+ 
+  WHERE week != 0
+  GROUP BY week
+)
+```
+
+**RESULTS:**
+
+
+TABELA
+
+
+This doesn’t show a high change between weeks.
+If we see the average for the period of 31 days, 53,83% achieve the minimum recommendation by the American Heart Association, lower than we see in the hole population ( global prevalence of insufficient physical activity of 23·3% by The Lancet).
+
+
+**VISUALIZATION:**
+
+![Fig 4 2 2 (1)](https://user-images.githubusercontent.com/66830501/178832489-4a307c2c-0628-4d28-ba29-1615242a66da.png)
+
+#### 4.2.3 - Is there a preferred day of week for doing physical activity ?
+
+**SQL QUERY:**
+
+```sql
+SELECT 
+CASE
+  WHEN weekday = 1 THEN 'Sunday'
+  WHEN weekday = 2 THEN 'Monday'
+  WHEN weekday = 3 THEN 'Tuesday'
+  WHEN weekday = 4 THEN 'Wednesday'
+  WHEN weekday = 5 THEN 'Thursday'
+  WHEN weekday = 6 THEN 'Friday'
+  WHEN weekday = 7 THEN 'Saturday'
+  ELSE ''
+  END AS day_of_week,
+ROUND(AVG(total_activity_minutes),2) AS avg_activity_week
+FROM
+(
+  SELECT Id, ActivityDay,
+  EXTRACT(DAYOFWEEK FROM ActivityDay) AS weekday,
+  LightlyActiveMinutes + FairlyActiveMinutes + VeryActiveMinutes AS total_activity_minutes
+ 
+  FROM `resonant-cairn-350019.google_capstone_CaseStudy.dailyIntensities`
+  WHERE Id != 0
+) AS inner_query
+ 
+ 
+GROUP BY day_of_week
+ORDER BY avg_activity_week DESC
+ ```
+ 
+**RESULTS:**
+
+TABELA
+
+Saturday is the preferred day for doing physical activity, despite intensity. 
+We have a bias here because any movement is considered Light Activity. So if we disconsider Light Activity is going to have any changes ?
+
+**SQL QUERY:**
+
+```sql
+SELECT 
+CASE
+  WHEN weekday = 1 THEN 'Sunday'
+  WHEN weekday = 2 THEN 'Monday'
+  WHEN weekday = 3 THEN 'Tuesday'
+  WHEN weekday = 4 THEN 'Wednesday'
+  WHEN weekday = 5 THEN 'Thursday'
+  WHEN weekday = 6 THEN 'Friday'
+  WHEN weekday = 7 THEN 'Saturday'
+  ELSE ''
+  END AS day_of_week,
+ROUND(AVG(total_activity_minutes),2) AS avg_activity_week
+FROM
+(
+  SELECT Id, ActivityDay,
+  EXTRACT(DAYOFWEEK FROM ActivityDay) AS weekday,
+  FairlyActiveMinutes + VeryActiveMinutes AS total_activity_minutes
+ 
+  FROM `resonant-cairn-350019.google_capstone_CaseStudy.dailyIntensities`
+  WHERE Id != 0
+) AS inner_query
+ 
+ 
+GROUP BY day_of_week
+ORDER BY avg_activity_week DESC
+```
+
+**RESULTS:**
+
+TABELA 
+
+When we only consider fairly and highly activities, Tuesday becomes the preferred day of week for doing physical activity. 
+
+#### 4.2.4 - In what period of the day users do more physical activity ?
+
+**SQL QUERY:**
+
+```sql
+SELECT 
+CASE
+  WHEN hour >= 0 AND hour < 6 THEN 'Dawn'
+  WHEN hour >= 6 AND hour < 12 THEN 'Morning'
+  WHEN hour >= 12 AND hour < 18 THEN 'Afternoon'
+  WHEN hour >= 18 THEN 'Night'
+  ELSE ''
+  END AS period_of_day,
+ROUND(AVG(TotalIntensity),2) AS avg_intensity
+ 
+FROM
+(
+  SELECT  TotalIntensity,
+ 
+  EXTRACT(HOUR FROM ActivityHour) AS hour,
+  
+ 
+  FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyIntensities`
+  WHERE TotalIntensity != 0
+  GROUP BY  hour,TotalIntensity
+)
+GROUP BY period_of_day
+ORDER BY avg_intensity DESC
+```
+
+**RESULTS:**
+
+TABELA
+
+#### 4.2.5 - In what period of the day users spent more calories ?
+
+**SQL QUERY:**
+
+```sql
+SELECT 
+CASE
+  WHEN hour >= 0 AND hour < 6 THEN 'Dawn'
+  WHEN hour >= 6 AND hour < 12 THEN 'Morning'
+  WHEN hour >= 12 AND hour < 18 THEN 'Afternoon'
+  WHEN hour >= 18 THEN 'Night'
+  ELSE ''
+  END AS period_of_day,
+ROUND(AVG(avg_calories),2) AS calories
+FROM
+(
+  SELECT  
+ 
+  EXTRACT(HOUR FROM ActivityHour) AS hour,
+  AVG(calories) AS avg_calories
+ 
+  FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyCalories`
+ 
+  GROUP BY  hour
+)
+GROUP BY period_of_day
+ORDER BY calories DESC
+```
+
+**RESULTS:**
+
+TABELA 
+
+#### 4.2.6 - The difference in activities betweens periods of the day and day of week
+
+**SQL QUERY:**
+
+```sql
+SELECT
+CASE
+  WHEN weekday = 1 THEN 'Sunday'
+  WHEN weekday = 2 THEN 'Monday'
+  WHEN weekday = 3 THEN 'Tuesday'
+  WHEN weekday = 4 THEN 'Wednesday'
+  WHEN weekday = 5 THEN 'Thursday'
+  WHEN weekday = 6 THEN 'Friday'
+  WHEN weekday = 7 THEN 'Saturday'
+  ELSE ''
+  END AS day_of_week,
+CASE
+  WHEN hour >= 0 AND hour < 6 THEN 'Dawn'
+  WHEN hour >= 6 AND hour < 12 THEN 'Morning'
+  WHEN hour >= 12 AND hour < 18 THEN 'Afternoon'
+  WHEN hour >= 18 THEN 'Night'
+  ELSE ''
+  END AS period_of_day,
+ROUND(AVG(avg_intensity)) avgIntensity
+ 
+FROM
+(
+  SELECT  
+  EXTRACT(DAYOFWEEK FROM ActivityHour) AS weekday,
+  EXTRACT(HOUR FROM ActivityHour) AS hour,
+  ROUND(AVG(TotalIntensity),2) AS avg_intensity 
+  FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyIntensities`
+  WHERE Id != 0
+  --GROUP BY  hour,TotalIntensity
+  GROUP BY weekday,hour
+)
+ 
+GROUP BY day_of_week, period_of_day
+```
+
+**RESULTS:**
+
+TABELA
+
+##### AFTER TURNING WIDE INTO SPREADSHEETS
+
+TABELA
+
+#### 4.2.7 - The difference in calories spent betweens periods of the day and day of week
+
+For this, I chose Table 6 - hourlyCalories , because the other tables that were separated by hours (steps and totalintensity) weren't adequate. The amount of steps can’t give the answer to this question, and the table of total intensities I couldn't understand exactly what it was measuring. 
+
+**SQL QUERY**
+
+```sql
+SELECT
+CASE
+  WHEN weekday = 1 THEN 'Sunday'
+  WHEN weekday = 2 THEN 'Monday'
+  WHEN weekday = 3 THEN 'Tuesday'
+  WHEN weekday = 4 THEN 'Wednesday'
+  WHEN weekday = 5 THEN 'Thursday'
+  WHEN weekday = 6 THEN 'Friday'
+  WHEN weekday = 7 THEN 'Saturday'
+  ELSE ''
+  END AS day_of_week,
+CASE
+  WHEN hour >= 0 AND hour < 6 THEN 'Dawn'
+  WHEN hour >= 6 AND hour < 12 THEN 'Morning'
+  WHEN hour >= 12 AND hour < 18 THEN 'Afternoon'
+  WHEN hour >= 18 THEN 'Night'
+  ELSE ''
+  END AS period_of_day,
+ROUND(AVG(avg_calories)) avgCalories
+ 
+FROM
+(
+ SELECT  
+  EXTRACT(DAYOFWEEK FROM ActivityHour) AS weekday,
+  EXTRACT(HOUR FROM ActivityHour) AS hour,
+  AVG(calories) AS avg_calories
+ 
+  FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlyCalories`
+  WHERE Id != 0
+  --GROUP BY  hour,TotalIntensity
+  GROUP BY weekday,hour
+)
+ 
+GROUP BY day_of_week, period_of_day
+```
+
+**RESULTS:**
+
+
+##### AFTER TURNING WIDE INTO SPREADSHEETS
+
+
+**VISUALIZATION:**
+
+![Fig 4 2 7](https://user-images.githubusercontent.com/66830501/178833412-8498afd0-3810-4985-a624-894c97009f65.png)
+
+#### 4.2.8 - The difference in steps betweens periods of the day and day of week
+
+**SQL QUERY **
+
+```sql
+SELECT
+CASE
+  WHEN weekday = 1 THEN 'Sunday'
+  WHEN weekday = 2 THEN 'Monday'
+  WHEN weekday = 3 THEN 'Tuesday'
+  WHEN weekday = 4 THEN 'Wednesday'
+  WHEN weekday = 5 THEN 'Thursday'
+  WHEN weekday = 6 THEN 'Friday'
+  WHEN weekday = 7 THEN 'Saturday'
+  ELSE ''
+  END AS day_of_week,
+CASE
+  WHEN hour >= 0 AND hour < 6 THEN 'Dawn'
+  WHEN hour >= 6 AND hour < 12 THEN 'Morning'
+  WHEN hour >= 12 AND hour < 18 THEN 'Afternoon'
+  WHEN hour >= 18 THEN 'Night'
+  ELSE ''
+  END AS period_of_day,
+ROUND(AVG(avg_steps)) avgSteps
+ 
+FROM
+(
+ SELECT  
+  EXTRACT(DAYOFWEEK FROM ActivityHour) AS weekday,
+  EXTRACT(HOUR FROM ActivityHour) AS hour,
+  AVG(StepTotal) AS avg_steps
+ 
+  FROM `resonant-cairn-350019.google_capstone_CaseStudy.hourlySteps`
+  WHERE Id != 0
+  --GROUP BY  hour,TotalIntensity
+  GROUP BY weekday,hour
+)
+ 
+GROUP BY day_of_week, period_of_day
+ ```
+
+**RESULTS:**
+
+TABELA
+
+
+**VISUALIZATION**
+
+![Fig 4 2 8 (1)](https://user-images.githubusercontent.com/66830501/178833584-29faf6c3-6b4b-4578-a644-7e4fa34b8583.png)
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
