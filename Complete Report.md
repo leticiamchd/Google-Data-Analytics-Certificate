@@ -345,7 +345,8 @@ TABELA
 #### 4.1.5 -How many users tracked all 3 pillars (Activity, sleep, weight)?
 
 First, create a table of frequency in each pilar
-Daily activity
+
+##### Daily activity
 
 **SQL QUERY:**
 
@@ -360,7 +361,7 @@ GROUP BY Id
 ORDER BY amount DESC
 ```
 
-Sleep:
+##### Sleep:
 
 SQL QUERY:
 
@@ -375,7 +376,7 @@ GROUP BY Id
 ORDER BY amount DESC
 ```
  
-Weight:
+##### Weight:
 
 SQL QUERY:
 
@@ -390,7 +391,7 @@ GROUP BY Id
 ORDER BY amount DESC
 ```
 
-Joining all 3 tables:
+##### Joining all 3 tables:
 
 SQL QUERY:
 
@@ -408,7 +409,7 @@ LEFT JOIN `resonant-cairn-350019.google_case_study_2.weight_frequency_users` AS 
 ON daily.Id = weight.Id
 ```
 
-Knowing how many completed at least one of all activities
+##### Knowing how many completed at least one of all activities
 
 ```sql
 SELECT 
@@ -425,7 +426,7 @@ WHERE sleep.amount IS NOT null AND weight.amount IS NOT null
 
 6 of 33 user completed at least of all pillars (Activity/Sleep/Weight)
 
-Knowing Who completed at least half of all activities, and how many days of each acitivity the person completed
+##### Knowing Who completed at least half of all activities, and how many days of each acitivity the person completed
 
 ```sql
 SELECT 
