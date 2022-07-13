@@ -76,7 +76,7 @@ Bellabeat is a high-tech manufacturer of health-focused products for women. Is a
 **How** : They do that with an ecosystem of products and services that focus on women’s health. <br/>
 **What** : Wearables using feminine design and technology adjusted to female bodies.
 
-### Why tracking health habits ?
+### Why track health habits ?
 
 Chronic disease can result in loss of independence, years of disability, or death, and impose a considerable economic burden on health services.
 Today, chronic diseases are a major public health problem worldwide. In 2005, the World Health Organization (WHO) estimated that 61 per cent of all deaths -- 35 million -- and 49 per cent of the global burden of disease were attributable to chronic diseases. By 2030, the proportion of total global deaths due to chronic diseases is expected to increase to 70 per cent and the global burden of disease to 56 per cent.
