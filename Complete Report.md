@@ -655,10 +655,10 @@ COUNT(daily.Id) AS num_dailyActivitites,
 COUNT(sleep.Id) AS num_sleep,
 COUNT(weight.Id) AS num_weight
  
-FROM `resonant-cairn-350019.google_case_study_2.DailyActivity_frequency_users` AS daily
-LEFT JOIN `resonant-cairn-350019.google_case_study_2.sleep_frequency_users` AS sleep
+FROM ...google_case_study_2.DailyActivity_frequency_users` AS daily
+LEFT JOIN ...google_case_study_2.sleep_frequency_users` AS sleep
 ON daily.Id = sleep.Id
-LEFT JOIN `resonant-cairn-350019.google_case_study_2.weight_frequency_users` AS weight
+LEFT JOIN ...google_case_study_2.weight_frequency_users` AS weight
 ON daily.Id = weight.Id
  
 WHERE (daily.Id = 2347167796 OR daily.Id = 3372868164 OR daily.Id = 4057192912 OR daily.Id = 6117666160 OR daily.Id = 6290855005 OR daily.Id = 7007744171 OR daily.Id = 8253242879) 
@@ -670,8 +670,8 @@ WHERE (daily.Id = 2347167796 OR daily.Id = 3372868164 OR daily.Id = 4057192912 O
 | 7                    | 3         | 0          |
 
 
-7 Users
-3 tracked also their sleep - 42,85%
+7 Users <br/>
+3 tracked also their sleep - 42,85%<br/>
 0 tracked their weight  - 0 %
 
 ###### Comparing with the users that tracked 31 days
@@ -684,10 +684,10 @@ COUNT(daily.Id) AS num_dailyActivitites,
 COUNT(sleep.Id) AS num_sleep,
 COUNT(weight.Id) AS num_weight
  
-FROM `resonant-cairn-350019.google_case_study_2.DailyActivity_frequency_users` AS daily
-LEFT JOIN `resonant-cairn-350019.google_case_study_2.sleep_frequency_users` AS sleep
+FROM ...google_case_study_2.DailyActivity_frequency_users` AS daily
+LEFT JOIN ...google_case_study_2.sleep_frequency_users` AS sleep
 ON daily.Id = sleep.Id
-LEFT JOIN `resonant-cairn-350019.google_case_study_2.weight_frequency_users` AS weight
+LEFT JOIN ...google_case_study_2.weight_frequency_users` AS weight
 ON daily.Id = weight.Id
  
 WHERE (daily.Id != 2347167796 AND daily.Id != 3372868164 AND daily.Id != 4057192912 AND daily.Id != 6117666160 AND daily.Id != 6290855005 AND daily.Id != 7007744171 AND daily.Id != 8253242879) 
@@ -700,8 +700,8 @@ WHERE (daily.Id != 2347167796 AND daily.Id != 3372868164 AND daily.Id != 4057192
 | 26                   | 21        | 8          |
 
 
-26 Users
-21 tracked also their sleep - 80,76%
+26 Users<br/>
+21 tracked also their sleep - 80,76%<br/>
 8 tracked their weight  - 30,76%
 
 
@@ -712,10 +712,10 @@ https://www.10000steps.org.au/articles/counting-steps/#:~:text=Low%20active%20is
 
 According to this, we are going to classificate de users:
 
-Sedentary < 5,000 steps per day 
-Low Active 5,000 ~ 7,499 steps per day 
-Somewhat Active 7,500 ~ 9,999 steps per day 
-Active > 10,000 steps per day 
+Sedentary < 5,000 steps per day <br/>
+Low Active 5,000 ~ 7,499 steps per day <br/>
+Somewhat Active 7,500 ~ 9,999 steps per day <br/>
+Active > 10,000 steps per day <br/>
 Highly Active > 12,500 steps per day 
  
 **SQL QUERY:**
@@ -787,7 +787,7 @@ TABELA
 #### 4.2.2 - Amount of users that achieved the minimum physical activity recommended by the American Heart Association 
 https://www.heart.org/en/healthy-living/fitness/fitness-basics/aha-recs-for-physical-activity-in-adults
 
-Very Active Minutes = Vigorous activity 
+Very Active Minutes = Vigorous activity <br/>
 Fairly Active Minutes = Moderate activity
 
 **SQL QUERY:**
