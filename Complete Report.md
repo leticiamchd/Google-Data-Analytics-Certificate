@@ -1145,6 +1145,8 @@ TABELA
 
 ![Fig 4 2 8 (1)](https://user-images.githubusercontent.com/66830501/178833584-29faf6c3-6b4b-4578-a644-7e4fa34b8583.png)
 
+## 5 - Share
+
 
 
 
