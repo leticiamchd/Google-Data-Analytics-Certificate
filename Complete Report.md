@@ -643,6 +643,68 @@ We identificated a total of 7 users that didn’t use at least the mean number. 
 
 ![Fig 4 1 8 (1)](https://user-images.githubusercontent.com/66830501/178831986-607adcc5-8aab-4293-abe0-434f985d75a7.png)
 
+##### Low adherence users and their engagement with with tracking (Daily activities / Sleep / Weight)
+
+Digging into the 7 users that have quit tracking their daily activities sooner. Were they engaged in tracking Sleep and Weight ?
+
+**SQL QUERY**
+```sql 
+
+SELECT 
+COUNT(daily.Id) AS num_dailyActivitites, 
+COUNT(sleep.Id) AS num_sleep,
+COUNT(weight.Id) AS num_weight
+ 
+FROM `resonant-cairn-350019.google_case_study_2.DailyActivity_frequency_users` AS daily
+LEFT JOIN `resonant-cairn-350019.google_case_study_2.sleep_frequency_users` AS sleep
+ON daily.Id = sleep.Id
+LEFT JOIN `resonant-cairn-350019.google_case_study_2.weight_frequency_users` AS weight
+ON daily.Id = weight.Id
+ 
+WHERE (daily.Id = 2347167796 OR daily.Id = 3372868164 OR daily.Id = 4057192912 OR daily.Id = 6117666160 OR daily.Id = 6290855005 OR daily.Id = 7007744171 OR daily.Id = 8253242879) 
+```
+**RESULTS**
+
+| num_dailyActivitites | num_sleep | num_weight |
+|----------------------|-----------|------------|
+| 7                    | 3         | 0          |
+
+
+7 Users
+3 tracked also their sleep - 42,85%
+0 tracked their weight  - 0 %
+
+###### Comparing with the users that tracked 31 days
+
+**SQL QUERY**
+```sql 
+
+SELECT 
+COUNT(daily.Id) AS num_dailyActivitites, 
+COUNT(sleep.Id) AS num_sleep,
+COUNT(weight.Id) AS num_weight
+ 
+FROM `resonant-cairn-350019.google_case_study_2.DailyActivity_frequency_users` AS daily
+LEFT JOIN `resonant-cairn-350019.google_case_study_2.sleep_frequency_users` AS sleep
+ON daily.Id = sleep.Id
+LEFT JOIN `resonant-cairn-350019.google_case_study_2.weight_frequency_users` AS weight
+ON daily.Id = weight.Id
+ 
+WHERE (daily.Id != 2347167796 AND daily.Id != 3372868164 AND daily.Id != 4057192912 AND daily.Id != 6117666160 AND daily.Id != 6290855005 AND daily.Id != 7007744171 AND daily.Id != 8253242879) 
+```
+
+**RESULTS**
+
+| num_dailyActivitites | num_sleep | num_weight |
+|----------------------|-----------|------------|
+| 26                   | 21        | 8          |
+
+
+26 Users
+21 tracked also their sleep - 80,76%
+8 tracked their weight  - 30,76%
+
+
 ### 4.2 - Understand the users habits 
 
 #### 4.2.1 - Steps classification 
