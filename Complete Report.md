@@ -1147,6 +1147,11 @@ TABELA
 
 ## 5 - Share
 
+* Considering that the dataset is from a third part, is important to check if the bellabeat users have the same pattern of device usage and habits
+* Efforts should be made on improving the smart device usage to track other activities than the daily physical activity. Increasing the retention rate 
+* A way to increase the amount of users, is to address the correlation between smart device use and a higher physical activity recommendation achieved. So the device can be an ally for better health.
+* More information about the user should be addressed, like demographic information, so in the future, it’s possible to do a better market segmentation and consequently a more effectively marketing.
+
 
 
 
